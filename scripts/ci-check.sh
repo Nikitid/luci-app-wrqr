@@ -3,6 +3,7 @@ set -eu
 root="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)"
 cd "$root"
 ./scripts/check-version-sync.sh
+./scripts/check-readme.sh
 ./scripts/check-apk-trust.sh
 find scripts -type f -name '*.sh' -exec sh -n {} +
 find luci -type f -name '*.js' -exec node --check {} +

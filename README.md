@@ -1,35 +1,76 @@
-# luci-wrqr
+# Wi-Fi QR for OpenWrt
 
-[English](README.en.md)
+[Русский](README.ru.md)
 
-`luci-app-wrqr` добавляет виджет с QR-кодом Wi-Fi на страницу LuCI
-**Status → Overview**. Показывает по одному коду на каждую различающуюся
-активную точку доступа и объединяет одинаковые сети, вещаемые несколькими
-радиомодулями.
+[![CI](https://github.com/Nikitid/luci-app-wrqr/actions/workflows/ci.yml/badge.svg)](https://github.com/Nikitid/luci-app-wrqr/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Nikitid/luci-app-wrqr)](https://github.com/Nikitid/luci-app-wrqr/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Виджет читает свежее состояние UCI и беспроводного стека на обычном опросе
-статуса LuCI. Он ничего не перезапускает — ни Wi-Fi, ни rpcd, ни uhttpd, ни
-роутер. Неподдерживаемые, отключённые и не-AP интерфейсы пропускаются.
+The `luci-app-wrqr` package adds a widget with Wi-Fi QR codes to the LuCI
+**Status -> Overview** page.
 
-## Совместимость
+## Features
 
-- OpenWrt 24.10: установка релизного IPK через `opkg`.
-- OpenWrt 25.12: установка релизного APK из общего фида Nikitid.
+- one QR code for each distinct active access point;
+- identical networks broadcast by several radios share one code;
+- disabled, unsupported and non-AP interfaces are left out.
 
-## Локальные проверки
+## Requirements
+
+- OpenWrt 24.10 (IPK) or OpenWrt 25.12 (APK);
+- LuCI.
+
+## Installation
+
+### OpenWrt 24.10
+
+Download the latest `luci-app-wrqr_*_all.ipk` from
+[Releases](https://github.com/Nikitid/luci-app-wrqr/releases) and upload it
+through **System -> Software -> Upload Package**.
+
+### OpenWrt 25.12
+
+```sh
+wget -O /tmp/nikitid-feed.sh \
+  https://raw.githubusercontent.com/Nikitid/openwrt-feed/feed/install.sh
+sh /tmp/nikitid-feed.sh luci-app-wrqr
+```
+
+The installer verifies the publisher key, adds the shared signed Nikitid
+application repository and installs only the named package. To update:
+
+```sh
+apk update
+apk upgrade luci-app-wrqr
+```
+
+## How it works
+
+The widget reads fresh UCI and wireless runtime state on LuCI's normal status
+poll. It only reads: it restarts nothing and writes nothing - not Wi-Fi, rpcd,
+uhttpd or the router.
+
+## Development
 
 ```sh
 ./scripts/ci-check.sh
 ```
 
-Сборка APK для OpenWrt 25 совместимым SDK:
+Building, signing and releasing: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
-```sh
-OPENWRT_SDK_DIR=/path/to/openwrt-sdk-25.12.5-mediatek-filogic \
-  ./scripts/build-apk.sh
-```
+## Documentation
 
-## Документация
+- [Repository map](docs/MAP.md) - where things live
+- [Development](docs/DEVELOPMENT.md) - building, signing and releasing
 
-- [Карта репозитория](docs/MAP.md) — где что лежит
-- [Правила работы](AGENTS.md)
+## Support
+
+Questions and bug reports go to
+[Issues](https://github.com/Nikitid/luci-app-wrqr/issues/new/choose): pick the form that
+fits. Report a vulnerability privately through
+[a security advisory](https://github.com/Nikitid/luci-app-wrqr/security/advisories/new).
+English or Russian is fine.
+
+## License
+
+[MIT](LICENSE)

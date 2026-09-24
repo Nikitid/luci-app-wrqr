@@ -1,7 +1,6 @@
 # Repository map
 
-Where things live. The whole application is two files under `luci/`, neither
-large enough to need a generated index.
+Where things live. The whole application is two files under `luci/`.
 
 ## The shape of it
 
@@ -34,7 +33,7 @@ merely parses can still die at render.
 
 | file | for |
 | --- | --- |
-| `AGENTS.md` | the rules of working here |
 | `docs/MAP.md` | this file |
-| `README.md` | operator-facing, Russian |
-| `README.en.md` | the English version |
+| `docs/DEVELOPMENT.md` | building, signing and releasing |
+| `README.md` | user-facing, English |
+| `README.ru.md` | the Russian version |
