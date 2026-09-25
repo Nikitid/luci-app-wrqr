@@ -9,6 +9,8 @@
 Пакет `luci-app-wrqr` добавляет на страницу LuCI **Status -> Overview** виджет с
 QR-кодами для подключения к Wi-Fi.
 
+![Виджет Wi-Fi QR на странице Status -> Overview](docs/images/widget.png)
+
 ## Возможности
 
 - по одному QR-коду на каждую различающуюся активную точку доступа;

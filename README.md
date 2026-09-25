@@ -9,6 +9,8 @@
 The `luci-app-wrqr` package adds a widget with Wi-Fi QR codes to the LuCI
 **Status -> Overview** page.
 
+![Wi-Fi QR widget on Status -> Overview](docs/images/widget.png)
+
 ## Features
 
 - one QR code for each distinct active access point;
